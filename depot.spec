@@ -22,7 +22,7 @@ Simple file serve with AD auth
 
 
 %prep
-[[ "%{buildroot}" != "/" ]] && rm -rf "%{buildroot}"
+[[ "%{buildroot}" != "/" ]] && rm -rf %{buildroot}
 
 
 
@@ -38,12 +38,8 @@ tar -C "$RPM_BUILD_DIR/%{name}" -xzvf "%{SOURCE0}"
 
 
 
-%configure
-
-
-
 %install
-rm -rf %{buildroot}
+rm -rf   %{buildroot}
 mkdir -p %{buildroot}/etc/httpd/conf.d
 mkdir -p %{buildroot}/opt/depot/www
 mkdir -p %{buildroot}/opt/depot/shared
@@ -61,9 +57,10 @@ cp -r    www/*       %{buildroot}/opt/depot/www/
 %files
 %defattr(644, root, root, 755)
 %doc README.md
-/etc/httpd/conf.d/depot.conf
+%config(noreplace) /etc/httpd/conf.d/depot.conf
 %config(noreplace) /opt/depot/depot.conf
 /opt/depot/www/*
+/opt/depot/shared
 
 
 
