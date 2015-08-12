@@ -4,8 +4,28 @@ DEPOT
 A simple web file serve with AD auth
 
 
+PREREQUISITES
+-------------
+
+    sudo yum -y install git rpmbuild rpmdevtools
+    git config --global user.name  'First Lastname'
+    git config --global user.email 'first.lastname@example.local'
+    rpmdev-setuptree
+    mkdir ~/src
+    cd ~/src
+    git clone git@github.com:JasonSFuller/depot
+
+
+BUILD
+-----
+
+    cd ~/src/depot/
+    rpmbuild -ba depot.spec --define 'version x.y.z' --define 'release 1'
+
+
 TODO
 ----
+
  * check for infinite loop during https detection
  * pass in HTTP challenge/response username/password (for curl, wget, etc)
  * RPM install
