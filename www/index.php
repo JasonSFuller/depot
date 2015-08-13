@@ -10,29 +10,20 @@ if (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != 'on') {
 	my_session_logout();
 } elseif (my_session_valid()) {
 
-	if (isset($_GET['c'])) {
-		$checksum = my_validate_path($_GET['c']);
-		if ($checksum && is_file($checksum) && !is_link($checksum)) {
-			echo "md5:  " . hash('md5',  $checksum) . "\n";
-			echo "sha1: " . hash('sha1', $checksum) . "\n";
-			exit;
-		} else {
-			header("HTTP/1.0 404 Not Found");
-			show_error("404 - Not found"); 
-		}
-	}
 	$path = $GLOBALS['config']['my_file_path'];
-	if (isset($_GET['p'])) {
-		$path = my_validate_path($_GET['p']);
-		if (!$path) { 
-			header("HTTP/1.0 404 Not Found");
-			show_error("404 - Not found"); 
-		}
-	}
+	if (isset($_GET['c'])) { $path = my_validate_path($_GET['c']); }
+	if (isset($_GET['p'])) { $path = my_validate_path($_GET['p']); }
 	if (is_file($path) && !is_link($path)) {
-		show_download($path);
-	} else {
+		if (isset($_GET['c'])) {
+			show_checksum($path);
+		} else {
+			show_download($path);
+		}
+	} elseif(is_dir($path)) {
 		show_files($path);
+	} else {
+		header("HTTP/1.0 404 Not Found");
+		show_error("404 - Not found"); 
 	}
 
 } else {
@@ -249,7 +240,7 @@ function show_files ($dir) {
 	$_SESSION['last_seen'] = my_encrypt(time());
 	$username = my_decrypt($_SESSION['username']);
 	$fullname = my_decrypt($_SESSION['fullname']);
-	echo "<div>\n";
+	echo "<div class='row'>\n";
 	echo "\t<h1 class='col-md-7'><a href='/'>" . htmlentities($GLOBALS['config']['my_site_name']) . "</a></h1>\n";
 	echo "\t<div class='col-md-5 text-right my-userinfo'>\n";
 	echo "\t\t"  . htmlentities($fullname) . " \n";
@@ -391,4 +382,29 @@ function show_download($path) {
 	// file couldn't be opened
 	header("HTTP/1.0 500 Internal Server Error");
 	show_error("500 - Internal server error");
+}
+
+function show_checksum($path) {
+	show_header();
+	$_SESSION['last_seen'] = my_encrypt(time());
+	$username = my_decrypt($_SESSION['username']);
+	$fullname = my_decrypt($_SESSION['fullname']);
+	echo "<div class='row'>\n";
+	echo "\t<h1 class='col-md-7'><a href='/'>" . htmlentities($GLOBALS['config']['my_site_name']) . "</a></h1>\n";
+	echo "\t<div class='col-md-5 text-right my-userinfo'>\n";
+	echo "\t\t"  . htmlentities($fullname) . " \n";
+	echo "\t\t(" . htmlentities($username) . ") \n";
+	echo "\t\t<a class='btn btn-primary' href='/?logout'>Log out <i class='fa fa-sign-out'></i></a>\n";
+	echo "\t</div>\n";
+	echo "</div>\n";
+	echo "<div class='panel panel-default'>\n";
+	echo "\t<div class='panel-heading'>" . basename($path) . "</div>\n";
+	echo "\t<table class='table'>\n";
+	echo "\t<tbody>\n";
+	echo "\t\t<tr><td class='col-md-1'>MD5</td><td class='col-md-11'>"  . hash('md5',  $path) . "</td></tr>\n";
+	echo "\t\t<tr><td class='col-md-1'>SHA1</td><td class='col-md-11'>" . hash('sha1', $path) . "</td></tr>\n";
+	echo "\t</tbody>\n";
+	echo "\t</table>\n";
+	echo "</div>\n\n\n\n\n";
+	show_footer();
 }

@@ -48,7 +48,7 @@ Then, once the RPM is built (above), you can simply:
 
     sudo yum install /path/to/depot-x.y.z.DIST.rpm
 
-*NOTE:*  Since Apache and PHP are required, both will be installed as 
+*IMPORTANT:*  Since Apache and PHP are required, both will be installed as 
 dependencies of `depot`.  So, you need to do the appropriate things to configure 
 both applications for your environment.  Specifically, you'll need a proper 
 hostname to be configured (for Apache), and you'll need to set the timezone for 
@@ -90,3 +90,4 @@ SOURCES
  * http://stackoverflow.com/questions/2637945/getting-relative-path-from-absolute-path-in-php
  * http://www.media-division.com/php-download-script-with-resume-option/
  * http://www.freeformatter.com/mime-types-list.html
+ * http://www.electrictoolbox.com/jquey-make-entire-table-row-clickable/

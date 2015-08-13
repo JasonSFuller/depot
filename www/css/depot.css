@@ -1,5 +1,4 @@
 body { 
-	/* font-family: 'Source Sans Pro'; */
 	font-family: 'Open Sans'; 
 	font-size: 1.6em; 
 }
@@ -41,28 +40,9 @@ body {
 	border-top-right-radius: 0; 
 }
 
-h1 { 
-	font-weight: Bold;
-	margin-left: -10px; 
-}
-
-h1 a { 
-	text-decoration: none; 
-	color: #333333; 
-}
-
-.my-filelist thead th { 
-	color: #cccccc;
-}
-
-.my-userinfo { 
-	margin-top: 20px; 
-}
-
-.my-userinfo a { 
-	margin-left: 10px; 
-}
-
-.my-filelist tbody tr {
-	cursor: pointer;
-}
+h1 { font-weight: Bold; }
+h1 a { text-decoration: none; color: #333333; }
+.my-filelist thead th { color: #cccccc; }
+.my-userinfo { margin-top: 20px; }
+.my-userinfo a { margin-left: 10px; }
+.my-filelist tbody tr { cursor: pointer; }
