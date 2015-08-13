@@ -9,6 +9,18 @@ if (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != 'on') {
 } elseif (isset($_GET['logout'])) {
 	my_session_logout();
 } elseif (my_session_valid()) {
+
+	if (isset($_GET['c'])) {
+		$checksum = my_validate_path($_GET['c']);
+		if ($checksum && is_file($checksum) && !is_link($checksum) {
+			echo "md5:  " . hash('md5',  $checksum) . "\n";
+			echo "sha1: " . hash('sha1', $checksum) . "\n";
+			exit;
+		} else {
+			header("HTTP/1.0 404 Not Found");
+			show_error("404 - Not found"); 
+		}
+	}
 	$path = $GLOBALS['config']['my_file_path'];
 	if (isset($_GET['p'])) {
 		$path = my_validate_path($_GET['p']);
@@ -22,6 +34,7 @@ if (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != 'on') {
 	} else {
 		show_files($path);
 	}
+
 } else {
 	show_login();
 }
