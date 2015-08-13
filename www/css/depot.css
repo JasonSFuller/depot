@@ -52,18 +52,7 @@ h1 a {
 }
 
 .my-filelist thead th { 
-	color: #666666;
-}
-
-.my-filelist tbody td a { 
-	display: block; 
-	margin-left: 30px; 
-}
-
-.my-filelist tbody td i { 
-	float: left; 
-	margin: 3px; 
-	color: #999999; 
+	color: #cccccc;
 }
 
 .my-userinfo { 
@@ -74,3 +63,6 @@ h1 a {
 	margin-left: 10px; 
 }
 
+.my-filelist tbody tr {
+	cursor: pointer;
+}

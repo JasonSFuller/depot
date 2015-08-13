@@ -204,6 +204,8 @@ function show_header() {
 	echo "\t<link rel='stylesheet' type='text/css' href='/css/font-awesome-4.4.0/css/font-awesome.min.css'>\n";
 	echo "\t<link rel='stylesheet' type='text/css' href='/css/google-fonts.open-sans.css'>\n";
 	echo "\t<link rel='stylesheet' type='text/css' href='/css/depot.css'>\n";
+	echo "\t<script src='/js/jquery-2.1.4.min.js'></script>\n";
+	echo "\t<script src='/js/depot.js'></script>\n";
 	echo "\t<script src='/css/bootstrap-3.3.5-dist/js/bootstrap.min.js'></script>\n";
 	echo "\t<style type='text/css'>\n";
 	echo "\t</style>\n";
@@ -275,7 +277,13 @@ function show_files ($dir) {
 				$file['name'] = "Parent Directory";
 			}
 		}
-		echo "\t<td><i class='fa fa-fw " . $icon . "'></i> <a href='/?p=" . urlencode($file['rel_path']) . "'>" . htmlentities($file['name']) . "</a></td>\n";
+		echo "\t<td>";
+		if (!$file['dir']) { echo "<a href='/?c=" . urlencode($file['rel_path']) . "'>"; }
+		echo "<i class='fa fa-fw " . $icon . "'></i>";
+		if (!$file['dir']) { echo "</a>"; }
+		echo " <a class='my-filelink' href='/?p=" . urlencode($file['rel_path']) . "'>";
+		echo htmlentities($file['name']) . "</a>";
+		echo "</td>\n";
 		echo "\t<td class='text-right'>" . htmlentities($file['size']) . "</td>\n";
 		echo "\t<td>"                    . htmlentities($file['mod'])  . "</td>\n";
 		echo "</tr>\n";

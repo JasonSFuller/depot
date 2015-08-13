@@ -47,6 +47,14 @@ Then, once the RPM is built (above), you can simply:
 
     sudo yum install /path/to/depot-x.y.z.DIST.rpm
 
+*NOTE:*  Since Apache and PHP are required, both will be installed as 
+dependencies of `depot`.  So, you need to do the appropriate things to configure 
+both applications for your environment.  Specifically, you'll need a proper 
+hostname to be configured (for Apache), and you'll need to set the timezone for 
+PHP:
+
+    echo 'date.timezone = "America/New_York"' | sudo tee /etc/php.d/timezone.ini
+
 Edit the Depot application config file and Apache config file to fit your 
 environment:
 
