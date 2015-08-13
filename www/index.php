@@ -12,7 +12,7 @@ if (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != 'on') {
 
 	if (isset($_GET['c'])) {
 		$checksum = my_validate_path($_GET['c']);
-		if ($checksum && is_file($checksum) && !is_link($checksum) {
+		if ($checksum && is_file($checksum) && !is_link($checksum)) {
 			echo "md5:  " . hash('md5',  $checksum) . "\n";
 			echo "sha1: " . hash('sha1', $checksum) . "\n";
 			exit;
