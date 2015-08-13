@@ -63,7 +63,6 @@ TODO
 
  * check for infinite loop during https detection
  * pass in HTTP challenge/response username/password (for curl, wget, etc)
- * require HTTPS in apache conf
  * upload to dir
  * MD5 sum modal window?
 

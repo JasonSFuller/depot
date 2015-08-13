@@ -189,7 +189,6 @@ function show_header() {
 	echo "\t<link rel='stylesheet' type='text/css' href='/css/bootstrap-3.3.5-dist/css/bootstrap.min.css'>\n";
 	echo "\t<link rel='stylesheet' type='text/css' href='/css/bootstrap-3.3.5-dist/css/bootstrap-theme.min.css'>\n";
 	echo "\t<link rel='stylesheet' type='text/css' href='/css/font-awesome-4.4.0/css/font-awesome.min.css'>\n";
-	echo "\t<link rel='stylesheet' type='text/css' href='/css/google-fonts.source-sans-pro.css'>\n";
 	echo "\t<link rel='stylesheet' type='text/css' href='/css/google-fonts.open-sans.css'>\n";
 	echo "\t<link rel='stylesheet' type='text/css' href='/css/depot.css'>\n";
 	echo "\t<script src='/css/bootstrap-3.3.5-dist/js/bootstrap.min.js'></script>\n";
