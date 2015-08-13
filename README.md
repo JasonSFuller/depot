@@ -10,6 +10,7 @@ BUILD PREREQUISITES
     sudo yum -y install git rpmbuild rpmdevtools
     git config --global user.name  'First Lastname'
     git config --global user.email 'first.lastname@example.local'
+    git config --global color.ui   true
     rpmdev-setuptree
     mkdir ~/src
     cd ~/src
@@ -73,9 +74,9 @@ hostname should be set, real SSL certificates should be generated and used, etc.
 TODO
 --------------------------------------------------------------------------------
 
- * pass in HTTP challenge/response username/password (for curl, wget, etc)
+ * pass in http challenge/response info (for curl, wget, etc)
  * upload to dir
- * MD5 sum modal window?
+ * checksum modal window
 
 
 SOURCES
