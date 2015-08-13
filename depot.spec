@@ -1,7 +1,7 @@
 # rpmbuild -ba depot.spec --define 'version x.y.z' --define 'release 2'
 
 %define name depot
-%{!?version: %define version 0.0.4}
+%{!?version: %define version 0.0.5}
 %{!?release: %define release 1}
 
 Name:          %{name}
