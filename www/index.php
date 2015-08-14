@@ -236,6 +236,7 @@ function show_login() {
 }
 
 function show_files ($dir) {
+	ini_set('max_execution_time', 120);
 	show_header();
 	$_SESSION['last_seen'] = my_encrypt(time());
 	$username = my_decrypt($_SESSION['username']);
