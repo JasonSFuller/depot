@@ -245,7 +245,7 @@ function show_files ($dir) {
 	echo "\t<div class='col-md-5 text-right my-userinfo'>\n";
 	echo "\t\t"  . htmlentities($fullname) . " \n";
 	echo "\t\t(" . htmlentities($username) . ") \n";
-	echo "\t\t<a class='btn btn-primary' href='/?logout'>Log out <i class='fa fa-sign-out'></i></a>\n";
+	echo "\t\t<a class='btn btn-primary' href='/?logout'>Sign out <i class='fa fa-sign-out'></i></a>\n";
 	echo "\t</div>\n";
 	echo "</div>\n";
 	echo "<table class='table table-hover my-filelist'>\n";
@@ -394,15 +394,15 @@ function show_checksum($path) {
 	echo "\t<div class='col-md-5 text-right my-userinfo'>\n";
 	echo "\t\t"  . htmlentities($fullname) . " \n";
 	echo "\t\t(" . htmlentities($username) . ") \n";
-	echo "\t\t<a class='btn btn-primary' href='/?logout'>Log out <i class='fa fa-sign-out'></i></a>\n";
+	echo "\t\t<a class='btn btn-primary' href='/?logout'>Sign out <i class='fa fa-sign-out'></i></a>\n";
 	echo "\t</div>\n";
 	echo "</div>\n";
 	echo "<div class='panel panel-default'>\n";
 	echo "\t<div class='panel-heading'>" . basename($path) . "</div>\n";
 	echo "\t<table class='table'>\n";
 	echo "\t<tbody>\n";
-	echo "\t\t<tr><td class='col-md-1'>MD5</td><td class='col-md-11'>"  . hash('md5',  $path) . "</td></tr>\n";
-	echo "\t\t<tr><td class='col-md-1'>SHA1</td><td class='col-md-11'>" . hash('sha1', $path) . "</td></tr>\n";
+	echo "\t\t<tr><td class='col-md-1'>MD5</td><td class='col-md-11'>"  . hash_file('md5',  $path) . "</td></tr>\n";
+	echo "\t\t<tr><td class='col-md-1'>SHA1</td><td class='col-md-11'>" . hash_file('sha1', $path) . "</td></tr>\n";
 	echo "\t</tbody>\n";
 	echo "\t</table>\n";
 	echo "</div>\n\n\n\n\n";
