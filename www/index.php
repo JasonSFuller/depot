@@ -245,7 +245,7 @@ function show_files ($dir) {
 	echo "\t<div class='col-md-5 text-right my-userinfo'>\n";
 	echo "\t\t"  . htmlentities($fullname) . " \n";
 	echo "\t\t(" . htmlentities($username) . ") \n";
-	echo "\t\t<a class='btn btn-primary' href='/?logout'>Sign out <i class='fa fa-sign-out'></i></a>\n";
+	echo "\t\t<a class='btn btn-primary' href='/index.php?logout'>Sign out <i class='fa fa-sign-out'></i></a>\n";
 	echo "\t</div>\n";
 	echo "</div>\n";
 	echo "<table class='table table-hover my-filelist'>\n";
@@ -269,10 +269,10 @@ function show_files ($dir) {
 			}
 		}
 		echo "\t<td>";
-		if (!$file['dir']) { echo "<a href='/?c=" . urlencode($file['rel_path']) . "'>"; }
+		if (!$file['dir']) { echo "<a href='/checksum/" . $file['rel_path'] . "'>"; }
 		echo "<i class='fa fa-fw " . $icon . "'></i>";
 		if (!$file['dir']) { echo "</a>"; }
-		echo " <a class='my-filelink' href='/?p=" . urlencode($file['rel_path']) . "'>";
+		echo " <a class='my-filelink' href='/" . $file['rel_path'] . "'>";
 		echo htmlentities($file['name']) . "</a>";
 		echo "</td>\n";
 		echo "\t<td class='text-right'>" . htmlentities($file['size']) . "</td>\n";
@@ -394,7 +394,7 @@ function show_checksum($path) {
 	echo "\t<div class='col-md-5 text-right my-userinfo'>\n";
 	echo "\t\t"  . htmlentities($fullname) . " \n";
 	echo "\t\t(" . htmlentities($username) . ") \n";
-	echo "\t\t<a class='btn btn-primary' href='/?logout'>Sign out <i class='fa fa-sign-out'></i></a>\n";
+	echo "\t\t<a class='btn btn-primary' href='/index.php?logout'>Sign out <i class='fa fa-sign-out'></i></a>\n";
 	echo "\t</div>\n";
 	echo "</div>\n";
 	echo "<div class='panel panel-default'>\n";
