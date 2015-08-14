@@ -236,7 +236,6 @@ function show_login() {
 }
 
 function show_files ($dir) {
-	ini_set('max_execution_time', 120);
 	show_header();
 	$_SESSION['last_seen'] = my_encrypt(time());
 	$username = my_decrypt($_SESSION['username']);
@@ -402,8 +401,12 @@ function show_checksum($path) {
 	echo "\t<div class='panel-heading'>" . basename($path) . "</div>\n";
 	echo "\t<table class='table'>\n";
 	echo "\t<tbody>\n";
-	echo "\t\t<tr><td class='col-md-1'>MD5</td><td class='col-md-11'>"  . hash_file('md5',  $path) . "</td></tr>\n";
-	echo "\t\t<tr><td class='col-md-1'>SHA1</td><td class='col-md-11'>" . hash_file('sha1', $path) . "</td></tr>\n";
+	if (filesize($path) > 1 * 1024 * 1024 * 1024) {
+		echo "\t\t<tr><td>[ File too large to hash online ]</td></tr>\n";
+	} else {
+		echo "\t\t<tr><td class='col-md-1'>MD5</td><td class='col-md-11'>"  . hash_file('md5',  $path) . "</td></tr>\n";
+		echo "\t\t<tr><td class='col-md-1'>SHA1</td><td class='col-md-11'>" . hash_file('sha1', $path) . "</td></tr>\n";
+	}
 	echo "\t</tbody>\n";
 	echo "\t</table>\n";
 	echo "</div>\n\n\n\n\n";
